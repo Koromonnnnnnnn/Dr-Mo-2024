@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
 
-    for (int j = 70; j <= 80; j += 1)
+    for (int j = 70; j <= 80; j ++)
         cout << j << " ";
 
     cout << endl;
