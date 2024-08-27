@@ -40,10 +40,19 @@ while True:
         px -= vx
     if keys[pygame.K_RIGHT]:
         px += vx
-    
-    if not jumping and keys[pygame.K_UP]:
-        vy = jmp
-        jumping = True
+
+    if keys[pygame.K_UP]:
+        if not jump_pressed:
+            if not jumping:
+                vy = jmp
+                jumping = True
+            elif not double_jump:
+                vy = double_jmp
+                double_jump = True
+            jump_pressed = True
+
+    else:
+        jump_pressed = False
 
     #apply gravity
     vy += g
@@ -53,6 +62,7 @@ while True:
     if py >= 600 - ph:
         py = 600 - ph
         jumping =  False
+        double_jump = False
         vy = 0
 
     #render section
