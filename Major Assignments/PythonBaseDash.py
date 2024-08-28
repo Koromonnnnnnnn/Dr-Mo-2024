@@ -44,6 +44,18 @@ while True:
 
     # physics
 
+    # animation logic
+    frame_timer += animation_speed
+    if frame_timer >= 1:
+        frame_timer = 0
+        current_frame = (current_frame + 1) % 2  # switch between frames
+
+    # choose the correct frames
+    if current_frame == 0:
+        current_image = walk1
+    else:
+        current_image = walk2
+
     # player movement
     if keys[pygame.K_LEFT]:
         px -= vx
