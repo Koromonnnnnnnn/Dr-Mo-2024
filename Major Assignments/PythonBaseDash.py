@@ -89,4 +89,4 @@ while True:
     # render section
     screen.fill(WHITE)
     pygame.draw.rect(screen, BLUE, (px, py, pw, ph))  # player
-    pygame.display.flip()  # update display
+    pygame.display.update()  # update display

@@ -13,3 +13,12 @@ class Platform:
         self.y = random.randint(400, 550)
         self.speed = random.uniform(5, 7)
         self.type = random.randint(0, 2)
+
+def update(self):
+    self.x -= self.speed
+
+def draw(self, screen):
+    if self.type == 1:
+        pygame.draw.rect(screen, GREEN, (self.x, self.y, self.width, self.height))
+    else:
+        pygame.draw.rect(screen, BLUE, (self.x, self.y, self.width, self.height))
