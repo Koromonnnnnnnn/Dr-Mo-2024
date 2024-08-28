@@ -1,17 +1,26 @@
 import pygame
 
-#pygame boilerplate setup
+# pygame boilerplate setup
 pygame.init()
-screen = pygame.display.set_mode((800,600))
+screen = pygame.display.set_mode((800, 600))
 clock = pygame.time.Clock()
 pygame.display.set_caption("Base Dash Clone")
 
-#game variables
+# game variables
 WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
 FPS = 60
 
-#player variables
+# load player animation frames
+walk1 = pygame.image.load("walk1.png")
+walk2 = pygame.image.load("walk2.png")
+
+# animation variables
+current_frame = 0
+animation_speed = 0.1
+frame_timer = 0
+
+# player variables
 pw, ph = 10, 20
 px, py = 50, 50
 vx, vy = 5, 0
@@ -22,20 +31,20 @@ jumping = False
 double_jump = False
 jump_pressed = False
 
-#game loop
+# game loop
 while True:
     clock.tick(FPS)
 
-    #event handle
+    # event handle
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-    
+
     keys = pygame.key.get_pressed()
 
-    #physics
+    # physics
 
-    #player movement
+    # player movement
     if keys[pygame.K_LEFT]:
         px -= vx
     if keys[pygame.K_RIGHT]:
@@ -54,18 +63,18 @@ while True:
     else:
         jump_pressed = False
 
-    #apply gravity
+    # apply gravity
     vy += g
     py += vy
 
-    #check if on ground
+    # check if on ground
     if py >= 600 - ph:
         py = 600 - ph
-        jumping =  False
+        jumping = False
         double_jump = False
         vy = 0
 
-    #render section
+    # render section
     screen.fill(WHITE)
-    pygame.draw.rect(screen, BLUE, (px, py, pw, ph)) #player
-    pygame.display.flip() #update display
+    pygame.draw.rect(screen, BLUE, (px, py, pw, ph))  # player
+    pygame.display.flip()  # update display
