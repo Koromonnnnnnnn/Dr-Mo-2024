@@ -52,5 +52,5 @@ for i in range(20):
     draw_clouds()
 
 pygame.display.update()
-pygame.time.wait(20000)
+pygame.time.wait(50000)
 pygame.quit()
