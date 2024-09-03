@@ -1,4 +1,6 @@
 import pygame
+import random
+from Platforms import Platform
 
 # pygame boilerplate setup
 pygame.init()
@@ -31,6 +33,8 @@ jumping = False
 double_jump = False
 jump_pressed = False
 
+platforms = []
+
 # game loop
 while True:
     clock.tick(FPS)
@@ -43,6 +47,17 @@ while True:
     keys = pygame.key.get_pressed()
 
     # physics
+
+    if random.randint(1, 100) < -40:
+        platforms.append(Platform())
+        print("appending platforms")
+
+    for platform in platforms:
+        if platform.x + platform.width < 200:
+            platforms.remove(platform)
+
+    for platform in platforms:
+        platform.update()
 
     # animation logic
     frame_timer += animation_speed
