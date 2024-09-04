@@ -119,17 +119,14 @@ while True:
         )
 
         if player_rect.colliderect(platform_rect):
-            # Handle collision
-            if vy > 0:  # Moving downwards
-                py = platform.y - ph  # Place player on top of the platform
-                vy = 0  # Stop vertical movement
-                jumping = False  # Allow jumping again
+            if vy > 0:
+                py = platform.y - ph
+                vy = 0
+                jumping = False
                 double_jump = False
                 on_ground = True
-            elif vy < 0:  # Moving upwards (optional, depending on your game logic)
-                py = (
-                    platform.y + platform.height
-                )  # Adjust the player's position if necessary
+            elif vy < 0:
+                py = platform.y + platform.height
                 vy = 0
 
     # check if on ground (if no collision)
