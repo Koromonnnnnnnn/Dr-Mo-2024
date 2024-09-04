@@ -11,11 +11,17 @@ pygame.display.set_caption("Base Dash Clone")
 # game variables
 WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
+BLACK = (0, 0, 0)
 FPS = 60
 
 # load player animation frames
-walk1 = pygame.image.load("walk1.png")
-walk2 = pygame.image.load("walk2.png")
+try:
+    walk1 = pygame.image.load("walk1.png")
+    walk2 = pygame.image.load("walk2.png")
+except pygame.error as e:
+    print(f"Error loading images: {e}")
+    pygame.quit()
+    exit()
 
 # animation variables
 current_frame = 0
@@ -27,13 +33,21 @@ pw, ph = 10, 20
 px, py = 50, 50
 vx, vy = 5, 0
 g = 0.5
-jmp = -10
-double_jmp = -5
+jmp = -12  # changed this because it's not jumping high enough
+double_jmp = -10
 jumping = False
 double_jump = False
 jump_pressed = False
 
 platforms = []
+
+platform_add_timer = 0
+platform_add_interval = 50
+
+
+def get_player_rect(px, py, pw, ph):
+    return pygame.Rect(px, py, pw, ph)
+
 
 # game loop
 while True:
@@ -43,24 +57,22 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
+            exit()
 
     keys = pygame.key.get_pressed()
 
-    # physics
-
-    if random.randint(1, 100) < -40:
+    # platform spawning logic
+    platform_add_timer += 1
+    if platform_add_timer >= platform_add_interval:
         platforms.append(Platform())
-        print("appending platforms")
+        platform_add_timer = 0
+        print("Appending platform")
 
-    for platform in platforms:
-        if platform.x + platform.width < 200:
-            platforms.remove(platform)
-
+    # update and remove off-screen platforms
     for platform in platforms:
         platform.update()
-
-    for platform in platforms:
-        platform.draw(screen)
+        if platform.x + platform.width < 0:
+            platforms.remove(platform)
 
     # animation logic
     frame_timer += animation_speed
@@ -89,7 +101,6 @@ while True:
                 vy = double_jmp
                 double_jump = True
             jump_pressed = True
-
     else:
         jump_pressed = False
 
@@ -97,14 +108,48 @@ while True:
     vy += g
     py += vy
 
-    # check if on ground
-    if py >= 600 - ph:
+    # define the player's rectangle
+    player_rect = get_player_rect(px, py, pw, ph)
+
+    # check if on ground and handle collisions with platforms
+    on_ground = False
+    for platform in platforms:
+        platform_rect = pygame.Rect(
+            platform.x, platform.y, platform.width, platform.height
+        )
+
+        if player_rect.colliderect(platform_rect):
+            # Handle collision
+            if vy > 0:  # Moving downwards
+                py = platform.y - ph  # Place player on top of the platform
+                vy = 0  # Stop vertical movement
+                jumping = False  # Allow jumping again
+                double_jump = False
+                on_ground = True
+            elif vy < 0:  # Moving upwards (optional, depending on your game logic)
+                py = (
+                    platform.y + platform.height
+                )  # Adjust the player's position if necessary
+                vy = 0
+
+    # check if on ground (if no collision)
+    if not on_ground and py >= 600 - ph:
         py = 600 - ph
+        vy = 0
         jumping = False
         double_jump = False
-        vy = 0
 
     # render section
-    screen.fill(WHITE)
-    pygame.draw.rect(screen, BLUE, (px, py, pw, ph))  # player
+    screen.fill(BLACK)
+
+    # draw platforms
+    for platform in platforms:
+        platform.draw(screen)
+
+    # draw player
+    try:
+        pygame.draw.rect(screen, BLUE, (px, py, pw, ph))
+    except pygame.error as e:
+        print(f"Error drawing player image: {e}")
+
     pygame.display.update()  # update display
