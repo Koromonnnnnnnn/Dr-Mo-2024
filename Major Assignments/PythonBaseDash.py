@@ -59,6 +59,9 @@ while True:
     for platform in platforms:
         platform.update()
 
+    for platform in platforms:
+        platform.draw(screen)
+
     # animation logic
     frame_timer += animation_speed
     if frame_timer >= 1:
