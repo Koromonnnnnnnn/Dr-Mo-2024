@@ -20,8 +20,8 @@ while (
 
     radians = angle * 180 / 3.14
 
-    xpos = 20 * math.cos(radians) + 200
-    ypos = 20 * math.sin(radians) + 200
+    xpos = 50 * math.cos(radians*50) + 200
+    ypos = 50 * math.sin(radians*100) + 200
 
     # multiplying front of the trig functions by a constant makes the circle bigger
     # adding something to the end changes the position of the circle
