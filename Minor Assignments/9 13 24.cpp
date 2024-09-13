@@ -11,6 +11,7 @@ int main()
 
     int x1, y1;
     int x2, y2;
+    bool collision;
 
     cout << "Please enter x1:" << endl;
     cin >> x1;
@@ -24,10 +25,12 @@ int main()
     if (pointCollision(x1, y1, x2, y2))
     {
         cout << "The points collide." << endl;
+        collision = true;
     }
     else
     {
         cout << "The points do not collide." << endl;
+        collision = false;
     }
 
     return 0;
