@@ -24,6 +24,9 @@ def draw_pumpkin_spiral(x, y, width, height, depth, angle):
     pygame.draw.rect(screen, BLACK, (x + (width // 2 - stem_width // 2), y - stem_height, stem_width, stem_height), 2)
 
     pygame.draw.ellipse(screen, BLACK, (x + width * 0.1, y, width * 0.8, height), 2)
+    pygame.draw.ellipse(screen, BLACK, (x + width * 0.25, y, width * 0.5, height), 2)
+    pygame.draw.ellipse(screen, BLACK, (x + width * 0.35, y, width * 0.3, height), 2)
+    pygame.draw.ellipse(screen, BLACK, (x + width * 0.45, y, width * 0.1, height), 2)
 
     new_width = width * 1.15
     new_height = height * 1.15
