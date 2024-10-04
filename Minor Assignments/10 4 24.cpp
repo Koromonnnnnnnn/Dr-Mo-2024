@@ -34,5 +34,11 @@ int main()
     Student Alice("Alice", 75, 85, 97);
     Alice.getAverage();
     Alice.printReport();
+
+    cout << endl;
+
+    Student Livy("Livy", 54, 95, 20);
+    Livy.getAverage();
+    Livy.printReport();
     return 0;
 }
