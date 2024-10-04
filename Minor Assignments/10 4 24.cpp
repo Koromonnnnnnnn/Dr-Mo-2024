@@ -40,5 +40,6 @@ int main()
     Student Livy("Livy", 54, 95, 20);
     Livy.getAverage();
     Livy.printReport();
+    
     return 0;
 }
