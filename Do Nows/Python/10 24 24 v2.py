@@ -1,6 +1,8 @@
 import qrcode
 from PIL import Image
 
+#this qr code saves to a file instead of showing straight up
+
 qr = qrcode.QRCode(
     version = 1,
     error_correction=qrcode.constants.ERROR_CORRECT_L,
