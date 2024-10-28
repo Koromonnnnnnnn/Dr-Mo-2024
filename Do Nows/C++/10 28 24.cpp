@@ -71,7 +71,7 @@ int getticketPrice(int age)
     {
         price = 8;
     }
-    else if (age >= 60)
+    else if (age <= 60)
     {
         price = 18;
     }
