@@ -9,7 +9,7 @@ void truckWeight(int load);
 
 int getticketPrice(int age);
 
-string schoolzoneSignal(string color);
+void schoolzoneSignal(string color);
 
 int main()
 {
@@ -77,12 +77,11 @@ int getticketPrice(int age)
     {
         price = 12;
     }
-    
 
     return price;
 }
 
-string schoolzoneSignal(string color)
+void schoolzoneSignal(string color)
 {
     if (color == "Red")
     {
@@ -96,6 +95,4 @@ string schoolzoneSignal(string color)
     {
         cout << "Proceed" << endl;
     }
-
-    return color;
 }
