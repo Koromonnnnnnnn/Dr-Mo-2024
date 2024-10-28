@@ -5,7 +5,7 @@ void dockingCountdown();
 
 void verifyUsername();
 
-int truckWeight(int load);
+void truckWeight(int load);
 
 int getticketPrice(int age);
 
@@ -50,7 +50,7 @@ void verifyUsername()
     cout << "Access Granted" << endl;
 }
 
-int truckWeight(int load)
+void truckWeight(int load)
 {
     if (load <= 1200)
     {
@@ -60,8 +60,6 @@ int truckWeight(int load)
     {
         cout << "Overweight" << endl;
     }
-
-    return load;
 }
 
 int getticketPrice(int age)
