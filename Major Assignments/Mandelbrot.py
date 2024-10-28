@@ -1,12 +1,11 @@
+# Takes about 2 seconds to load
+
 import pygame
-import math
-import cmath
 
 WIDTH = 800
 HEIGHT = 800
 
 pygame.init()
-pygame.display.set_caption("mandelbrot")
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 screen.fill((0, 0, 0))
 
@@ -24,24 +23,24 @@ def mandelbrot(c):
 
 for x in range(WIDTH):
     for y in range(HEIGHT):
-        t = -2
-        m = -2
-
-        while t<2:
-            t+=1
-
-        while m<2:
-            m+=1
-
+        t = (x / WIDTH) * 4 - 2
+        m = (y / HEIGHT) * 4 - 2
         c = complex(t, m)
 
         num = mandelbrot(c)
         if num < 20:
-            screen.set_at((int(t+400), int(m+400)), (255, 255, 255))
+            color = (0, 0, 0)
+        elif num < 40:
+            color = (255, 0, 0)
+        elif num < 60:
+            color = (0, 255, 0)
+        elif num < 80:
+            color = (0, 0, 255)
+        else:
+            color = (0, 0, 0)
 
-        print("num is ", num, " at ", t+400, m+400)
-        pygame.display.flip()
+        screen.set_at((x, y), color)
 
-
-pygame.time.wait(10009)
+pygame.display.flip()
+pygame.time.wait(5000)
 pygame.quit()
