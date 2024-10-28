@@ -21,7 +21,7 @@ int main()
 
     int price = getticketPrice(16);
 
-    cout << "Price is " << price << endl;
+    cout << "Ticket price is " << price << endl;
 
     verifyUsername();
 
