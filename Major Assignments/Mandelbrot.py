@@ -37,8 +37,10 @@ for x in range(WIDTH):
 
         num = mandelbrot(c)
         if num < 20:
-            screen.set_at((int(t), int(m)), (255, 255, 255))
-            pygame.display.flip()
+            screen.set_at((int(t+400), int(m+400)), (255, 255, 255))
+
+        print("num is ", num, " at ", t+400, m+400)
+        pygame.display.flip()
 
 
 pygame.time.wait(10009)
