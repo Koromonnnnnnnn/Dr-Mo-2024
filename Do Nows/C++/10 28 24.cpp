@@ -15,24 +15,13 @@ int main()
 {
     dockingCountdown();
 
-    truckWeight(1000);
+    truckWeight(1500);
 
     schoolzoneSignal("Yellow");
 
-    int age = getticketPrice(16);
+    int price = getticketPrice(16);
 
-    if (age <= 10)
-    {
-        cout << "Price is $8" << endl;
-    }
-    else if (age >= 60)
-    {
-        cout << "Price is $18" << endl;
-    }
-    else
-    {
-        cout << "Price is $12" << endl;
-    }
+    cout << "Price is " << price << endl;
 
     verifyUsername();
 
@@ -90,6 +79,7 @@ int getticketPrice(int age)
     {
         price = 12;
     }
+    
 
     return price;
 }
