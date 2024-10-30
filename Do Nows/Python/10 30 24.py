@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#Numpy Code
+# Numpy Code
 
 matrix = np.random.randint(1, 101, size=(4, 4))
 print("Generated Matric:\n", matrix)
@@ -12,24 +12,30 @@ print("Maximum Value:", max_value)
 min_value = np.min(matrix)
 print("Minimum Value:", min_value)
 
-#Pie Chart / MatPlotLib
+# Pie Chart / MatPlotLib
 
 sizes = [25, 35, 15, 25]
-labels = ['Category 1', 'Category 2', 'Category 3', 'Category 4']
+labels = ["Category 1", "Category 2", "Category 3", "Category 4"]
 
-plt.pie(sizes, labels = labels)
+plt.pie(sizes, labels=labels)
 plt.title("Basic Pie Chart")
 plt.show()
 
-#Bar Graph / MathPlotLib
-causes = ['Hardware projects', 'Half-Eaten Snacks', 'Mysterious Sticky Notes', 'Enoch', 'Papers That Blew Off the Desk']
-items_count = [0,5,10,7,12]
+# Bar Graph / MathPlotLib
+causes = [
+    "Hardware projects",
+    "Half-Eaten Snacks",
+    "Mysterious Sticky Notes",
+    "Enoch",
+    "Papers That Blew Off the Desk",
+]
+items_count = [0, 5, 10, 7, 12]
 
-plt.bar(causes, items_count, color=['orange', 'green', 'blue', 'purple', 'red'])
+plt.bar(causes, items_count, color=["orange", "green", "blue", "purple", "red"])
 plt.xlabel("Causes of Mess")
 plt.ylabel("Number of Items")
 plt.title("Why Mo's Classroom is Messy: A Scientific Study")
 
-plt.xticks(rotation=30, ha = 'right')
+plt.xticks(rotation=30, ha="right")
 
 plt.show()
