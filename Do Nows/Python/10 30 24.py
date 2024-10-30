@@ -38,6 +38,8 @@ plt.bar(causes, items_count, color=["orange", "green", "blue", "purple", "red"])
 plt.xlabel("Causes of Mess")
 plt.ylabel("Number of Items")
 plt.title("Why Mo's Classroom is Messy: A Scientific Study")
+plt.suptitle("Because Cleaning Up is Optional", fontsize=10, color="gray")
+
 
 plt.xticks(rotation=30, ha="right")
 
