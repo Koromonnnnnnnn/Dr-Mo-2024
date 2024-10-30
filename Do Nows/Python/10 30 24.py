@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Numpy Code
 
@@ -39,3 +40,17 @@ plt.title("Why Mo's Classroom is Messy: A Scientific Study")
 plt.xticks(rotation=30, ha="right")
 
 plt.show()
+
+# Pandas 1
+
+data = {
+    "Friend": ["Melissa", "Natalie", "Ezri"],
+    "Favorite Candy": ["Chocolate Bar", "Candy Corn", "Gummy Bears"],
+    "Number Eaten This Week": [5, 3, 10],
+}
+
+df = pd.DataFrame(data)
+print("Candy Preferences DataFrame:")
+print(df)
+
+# Pandas 2

@@ -21,10 +21,10 @@ def mandelbrot(c):
     return counter
 
 
-for x in range(WIDTH):
-    for y in range(HEIGHT):
-        t = (x / WIDTH) * 4 - 2
-        m = (y / HEIGHT) * 4 - 2
+for x in range(800):
+    for y in range(800):
+        t = (x / 800) * 4 - 2
+        m = (y / 800) * 4 - 2
         c = complex(t, m)
 
         num = mandelbrot(c)
