@@ -4,7 +4,7 @@ import pandas as pd
 
 # Numpy Code
 
-matrix = np.random.randint(1, 101, size=(4, 4))
+matrix = np.random.randint(10, 51, size=(3, 3))  # Random Integers between 10 and 50
 print("Generated Matric:\n", matrix)
 
 max_value = np.max(matrix)
@@ -17,9 +17,11 @@ print("Minimum Value:", min_value)
 
 sizes = [25, 35, 15, 25]
 labels = ["Category 1", "Category 2", "Category 3", "Category 4"]
+explode = (0, 0.1, 0, 0)
+colors = ["lightcoral", "lightskyblue", "lightgreen", "orange"]
 
-plt.pie(sizes, labels=labels)
-plt.title("Basic Pie Chart")
+plt.pie(sizes, labels=labels, colors=colors, explode=explode, autopct="%1.1f%%")
+plt.title("reasons I’m grumpy today")
 plt.show()
 
 # Bar Graph / MathPlotLib
