@@ -54,3 +54,20 @@ print("Candy Preferences DataFrame:")
 print(df)
 
 # Pandas 2
+
+scores_data = {
+    "Student": ["Gus", "Liam", "Jayden"],
+    "Test 1 Score": [-5684, -9245, -8947],
+    "Test 2 Score": [-8584, -8855, -7505],
+}
+
+scores_df = pd.DataFrame(scores_data)
+print("Students Test Scores DataFrame:")
+print(scores_df)
+
+scores_df["Average Score"] = (scores_df["Test 1 Score"] + scores_df["Test 2 Score"]) / 2
+print(scores_df)
+
+failed_students = scores_df[scores_df["Average Score"] < 60]
+print("\nStudents Who Failed (Average Score Below 60):")
+print(failed_students)
