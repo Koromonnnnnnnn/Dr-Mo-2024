@@ -19,25 +19,19 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-
     screen.fill(BLACK)
 
-    # Skull shape (ellipse)
-    pygame.draw.ellipse(screen, WHITE, (250, 200, 300, 300))  # Skull
-    pygame.draw.ellipse(screen, WHITE, (250, 400, 225, 200))
+    pygame.draw.ellipse(screen, WHITE, (250, 200, 300, 300))
+    pygame.draw.ellipse(screen, WHITE, (285, 400, 225, 200))
 
-    # Eyes (circles)
-    pygame.draw.circle(screen, BLACK, (350, 300), 50)  # Left eye
-    pygame.draw.circle(screen, BLACK, (450, 300), 50)  # Right eye
+    pygame.draw.circle(screen, BLACK, (350, 300), 50)
+    pygame.draw.circle(screen, BLACK, (450, 300), 50)
 
-    # Nose (triangle)
-    pygame.draw.polygon(screen, BLACK, [(400, 350), (375, 400), (425, 400)])  # Nose
-
+    pygame.draw.polygon(screen, BLACK, [(400, 350), (375, 400), (425, 400)])
 
     for i in range(5):
         pygame.draw.rect(screen, BLACK, (340 + i * (20 + 5), 480, 20, 30))
         pygame.draw.rect(screen, BLACK, (340 + i * (20 + 5), 515, 20, 30))
-
 
     # Update the display
     pygame.display.flip()
