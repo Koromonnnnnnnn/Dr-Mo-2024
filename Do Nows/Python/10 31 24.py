@@ -7,6 +7,11 @@ pygame.init()
 screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Skull Drawing")
 
+diaimage = pygame.image.load("DiaDeLosMuertos.png")
+diaimage = pygame.transform.scale(
+    diaimage, (800, 500)
+) 
+
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -32,6 +37,8 @@ while running:
     for i in range(5):
         pygame.draw.rect(screen, BLACK, (340 + i * (20 + 5), 480, 20, 30))
         pygame.draw.rect(screen, BLACK, (340 + i * (20 + 5), 515, 20, 30))
+
+    screen.blit(diaimage, (0, 450))
 
     # Update the display
     pygame.display.flip()
