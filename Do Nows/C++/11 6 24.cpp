@@ -45,5 +45,10 @@ int main()
         cout << "Bad luck!" << endl;
     }
 
+    if (static_cast<int>(num1) % 2 != 0)
+        cout << "odd: " << num1;
+    if (static_cast<int>(num2) % 2 != 0)
+        cout << "odd: " << num2;
+
     return 0;
 }
