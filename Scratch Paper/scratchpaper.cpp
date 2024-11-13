@@ -1,13 +1,21 @@
 #include <iostream>
 using namespace std;
 
-void myFunction(string fname) {
-    cout << fname << " Refsnes\n";
+void verifyUsername()
+{
+    string username = "CodeMaster123";
+    string input;
+
+    while (input != usernam)
+    {
+        cout << "What is your username?" << endl;
+        cin >> input;
+    }
+    cout << "Access Granted" << endl;
 }
 
-int main(){
-    myFunction("Liam");
-    myFunction("Jenny");
-    myFunction("Anja");
-    return 0;
+int main()
+{
+    verifyUsername() 
+    return 0
 }
