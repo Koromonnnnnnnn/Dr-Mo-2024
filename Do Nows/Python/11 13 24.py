@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# caculate and regline functions not made by me !
+# caculate and regline functions not made by me ! from geek website linked in slides
 def calculateB(x, y, n):
     sx = sum(x)
     sy = sum(y)
@@ -27,7 +27,7 @@ X = [95, 85, 80, 70, 60]
 Y = [90, 80, 70, 65, 60]
 n = len(X)
 
-# caculate and regline functions not made by me !
+# caculate and regline functions not made by me ! from geek website linked in slides
 
 plt.scatter(X, Y, color='red', label='point')
 plt.plot([60, 95], [60, 90], color='purple', label='line') # min max
