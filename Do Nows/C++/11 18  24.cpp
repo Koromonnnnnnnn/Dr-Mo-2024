@@ -31,23 +31,20 @@ int main()
             cout << "Which religon? ";
             cin >> option;
             religion(option);
+            break;
         }
         else if (input == 't')
         {
             double f;
-            cout << "Farenheit: " << endl;
+            cout << "Farenheit: ";
             cin >> f;
-            double r = celcius(f);
+            double r = celsius(f);
             cout << f << " Farenheit is " << r << " Celsius";
-
-            print_menu();
-            cin >> input;
+            break;
         }
         else
         {
             cout << "invalid input" << endl;
-            print_menu();
-            cin >> input;
         }
     }
     return 0;
