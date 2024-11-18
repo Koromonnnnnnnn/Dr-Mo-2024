@@ -11,15 +11,15 @@ int option;
 
 int main()
 {
-    print_menu();
-    cin >> input;
 
     while (loop)
     {
+        print_menu();
+        cin >> input;
+
         if (input == 'q')
         {
             loop = false;
-            break;
         }
         else if (input == 'h')
         {
@@ -31,20 +31,19 @@ int main()
             cout << "Which religon? ";
             cin >> option;
             religion(option);
-            break;
         }
         else if (input == 't')
         {
             double f;
             cout << "Farenheit: ";
             cin >> f;
+            getchar();
             double r = celsius(f);
-            cout << f << " Farenheit is " << r << " Celsius";
-            break;
+            cout << f << " Farenheit is " << r << " Celsius" << endl;
         }
         else
         {
-            cout << "invalid input" << endl;
+            cout << "invalid command" << endl;
         }
     }
     return 0;
