@@ -12,24 +12,45 @@ int option;
 int main()
 {
     print_menu();
-    while(loop)
+    cin >> input;
+
+    while (loop)
     {
-        if (input == 'q'){
-
+        if (input == 'q')
+        {
+            loop = false;
+            break;
         }
-        else if (input == 'h'){
-
+        else if (input == 'h')
+        {
+            print_menu();
+            cin >> input;
         }
-        else if (input == 'r'){
+        else if (input == 'r')
+        {
+            cout << "Which religon? ";
+            cin >> option;
             religion(option);
         }
-        else if (input == 't'){
+        else if (input == 't')
+        {
+            double f;
+            cout << "Farenheit: " << endl;
+            cin >> f;
+            double r = celcius(f);
+            cout << f << " Farenheit is " << r << " Celsius";
 
+            print_menu();
+            cin >> input;
         }
-        else{
+        else
+        {
             cout << "invalid input" << endl;
+            print_menu();
+            cin >> input;
         }
     }
+    return 0;
 }
 
 void print_menu()
@@ -37,50 +58,45 @@ void print_menu()
     cout << "q: quit" << endl;
     cout << "h: help" << endl;
     cout << "r: info about a religion" << endl;
-    cout << "t: temperature conversion"<< endl;
+    cout << "t: temperature conversion" << endl;
     cout << "Command: ";
 }
 void religion(int x)
 {
-    int religionNum;
-
-    cout << "Which religon?";
-    cin >> option;
-
-    switch(religionNum)
+    switch (x)
     {
     case 0:
         cout << "I don't know anything about religion #" << option;
         break;
     case 1:
-        cout << "Christianity: 31.2%" << endl;\
+        cout << "Christianity: 31.2%" << endl;
         break;
     case 2:
-        cout << "" << endl;
+        cout << "Islam: 24.1%" << endl;
         break;
     case 3:
-        cout << "" << endl;
+        cout << "Secular/Nonreligious/Agnostic/Atheist: 16%" << endl;
         break;
     case 4:
-        cout << "" << endl;
+        cout << "Hinduism: 15.1%" << endl;
         break;
     case 5:
-        cout << "" << endl;
+        cout << "Buddhism: 6.9%" << endl;
         break;
     case 6:
-        cout << "" << endl;
+        cout << "Chinese traditional religion: 5.5%" << endl;
         break;
     case 7:
-        cout << "" << endl;
+        cout << "Ethnic religions: 4.19%" << endl;
         break;
     case 8:
-        cout << "" << endl;
+        cout << "African traditional religions: 1.4%" << endl;
         break;
     case 9:
-        cout << "" << endl;
+        cout << "Sikhism: 0.32%" << endl;
         break;
     case 10:
-        cout << "" << endl;
+        cout << "Spiritsm: 0.21%" << endl;
         break;
     default:
         cout << "I don't know anything about religion #" << option;
