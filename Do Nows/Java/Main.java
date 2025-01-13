@@ -7,7 +7,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // Used for user input
         int room = 1; // Starting room
+        boolean roomTwoFight = true;
+        boolean winCondition = false;
         String direction;
+        String winner;
         for(int i = 0; i<10; i++) {
             inventory[i] = " "; //initialize each inventory slot to 0
         }
@@ -22,7 +25,7 @@ public class Main {
             System.out.println(" ");
             switch (room) {
                 case 1: // Room 1
-                    System.out.println("You are in room 1, you can go east.");
+                    System.out.println("You are in 'Room One', do you wish to go East towards 'Room Two'?");
                     if (!inventory[0].equals("sword")) {
                         inventory[0] = "sword";
                         System.out.println("You got a sword!");
@@ -37,13 +40,69 @@ public class Main {
 
                 case 2: // Room 2
                     String monster = generateMonster();
-                    fightMonster(monster);
-                    System.out.println("You are in room 2, you can go west.");
+                    if (roomTwoFight) {
+                        fightMonster(monster);
+                        roomTwoFight = false;
+                    }
+                    System.out.println("You are in 'Room Two', do you wish to go South towards 'Room Three'? Or West back to 'Room One'");
+                    direction = scanner.nextLine().trim().toLowerCase();
+                    if ("south".equals(direction)) {
+                        room = 3;
+                    }
+                    else if ("west".equals(direction)) {
+                        room = 1;
+                    }
+                    else {
+                        System.out.println("Invalid direction. Staying in room " + room);
+                    }
+                    break;
+
+                case 3: // Room 3
+                    System.out.println("You are in 'Room Three', you can go South to 'Room Four' (Cave), or North back to 'Room Two'");
+                    direction = scanner.nextLine().trim().toLowerCase();
+                    if ("south".equals(direction)) {
+                        room = 4;
+                    }
+                    else if ("north".equals(direction)) {
+                        room = 2;
+                    }
+                    else {
+                        System.out.println("Invalid direction. Staying in room " + room);
+                    }
+                    break;
+
+                case 4: // Room 4
+                    System.out.println("You are in 'Room Four' (Cave), you can go East to 'Room Five', or North back to 'Room Three'");
+                    direction = scanner.nextLine().trim().toLowerCase();
+                    if ("east".equals(direction)) {
+                        room = 5;
+                    }
+                    else if ("north".equals(direction)) {
+                        room = 3;
+                    }
+                    else {
+                        System.out.println("Invalid direction. Staying in room " + room);
+                    }
+                    break;
+
+                case 5: // Room 5
+                    System.out.println("You are in 'Room Five', you can go West back to 'Room Four'");
                     direction = scanner.nextLine().trim().toLowerCase();
                     if ("west".equals(direction)) {
-                        room = 1;
-                    } else {
+                        room = 4;
+                    }
+                    else {
                         System.out.println("Invalid direction. Staying in room " + room);
+                    }
+                    System.out.println("Type 'i love cats' to win");
+                    winner = scanner.nextLine().trim().toLowerCase();
+                    if ("i love cats".equals(winner)) {
+                        System.out.println("YOU WON!");
+                        break;
+                    }
+                    else {
+                        System.out.println("YOU LOST!");
+                        break;
                     }
                     break;
             } // End of switch
@@ -67,3 +126,4 @@ public class Main {
         System.out.println("You deal " + damage + " damage and defeat the " + monster + "!");
     }
 }
+
