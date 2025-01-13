@@ -8,15 +8,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in); // Used for user input
         int room = 1; // Starting room
         boolean roomTwoFight = true;
-        boolean winCondition = false;
+        boolean winCondition = true;
         String direction;
         String winner;
-        for(int i = 0; i<10; i++) {
-            inventory[i] = " "; //initialize each inventory slot to 0
-        }
-        inventory[3] = "potato"; //give user a potato!
 
-        while (true) { // Game loop
+        for (int i = 0; i < 10; i++) {
+            inventory[i] = " "; // Initialize each inventory slot to empty
+        }
+        inventory[3] = "potato"; // Give user a potato!
+
+        while (winCondition) { // Game loop
             System.out.println("Your inventory:");
             for (int i = 0; i < 10; i++) {
                 System.out.print(inventory[i]);
@@ -25,7 +26,7 @@ public class Main {
             System.out.println(" ");
             switch (room) {
                 case 1: // Room 1
-                    System.out.println("You are in 'Room One', do you wish to go East towards 'Room Two'?");
+                    System.out.println("You are in 'Room One', do you wish to go east towards 'Room Two'?");
                     if (!inventory[0].equals("sword")) {
                         inventory[0] = "sword";
                         System.out.println("You got a sword!");
@@ -41,10 +42,10 @@ public class Main {
                 case 2: // Room 2
                     String monster = generateMonster();
                     if (roomTwoFight) {
-                        fightMonster(monster);
+                        fightMonster(monster);  // Monster fight and item drop
                         roomTwoFight = false;
                     }
-                    System.out.println("You are in 'Room Two', do you wish to go South towards 'Room Three'? Or West back to 'Room One'");
+                    System.out.println("You are in 'Room Two', do you wish to go south towards 'Room Three'? Or west back to 'Room One'");
                     direction = scanner.nextLine().trim().toLowerCase();
                     if ("south".equals(direction)) {
                         room = 3;
@@ -58,7 +59,7 @@ public class Main {
                     break;
 
                 case 3: // Room 3
-                    System.out.println("You are in 'Room Three', you can go South to 'Room Four' (Cave), or North back to 'Room Two'");
+                    System.out.println("You are in 'Room Three', you can go south to 'Room Four' (Cave), or north back to 'Room Two'");
                     direction = scanner.nextLine().trim().toLowerCase();
                     if ("south".equals(direction)) {
                         room = 4;
@@ -72,7 +73,7 @@ public class Main {
                     break;
 
                 case 4: // Room 4
-                    System.out.println("You are in 'Room Four' (Cave), you can go East to 'Room Five', or North back to 'Room Three'");
+                    System.out.println("You are in 'Room Four' (Cave), you can go east to 'Room Five', or north back to 'Room Three'");
                     direction = scanner.nextLine().trim().toLowerCase();
                     if ("east".equals(direction)) {
                         room = 5;
@@ -86,23 +87,17 @@ public class Main {
                     break;
 
                 case 5: // Room 5
-                    System.out.println("You are in 'Room Five', you can go West back to 'Room Four'");
+                    System.out.println("You are in 'Room Five', you can go west back to 'Room Four' or Type 'i love cats' to win");
                     direction = scanner.nextLine().trim().toLowerCase();
                     if ("west".equals(direction)) {
                         room = 4;
                     }
+                    else if ("i love cats".equals(direction)) {
+                        System.out.println("YOU WON!");
+                        winCondition = false;
+                    }
                     else {
                         System.out.println("Invalid direction. Staying in room " + room);
-                    }
-                    System.out.println("Type 'i love cats' to win");
-                    winner = scanner.nextLine().trim().toLowerCase();
-                    if ("i love cats".equals(winner)) {
-                        System.out.println("YOU WON!");
-                        break;
-                    }
-                    else {
-                        System.out.println("YOU LOST!");
-                        break;
                     }
                     break;
             } // End of switch
@@ -117,13 +112,35 @@ public class Main {
         return names[index];
     }
 
-    // Battle system function
+    // Battle system function with item drop
     public static void fightMonster(String monster) {
         Random rand = new Random();
         int damage = rand.nextInt(10) + 5; // Simulates damage dealt
 
         System.out.println("A wild " + monster + " appears!");
         System.out.println("You deal " + damage + " damage and defeat the " + monster + "!");
+
+        // Drop a random item
+        String droppedItem = weaponGen();
+        addItemToInventory(droppedItem);
+        System.out.println("You found a " + droppedItem + "!");
+    }
+
+    // Item generator function
+    public static String weaponGen() {
+        String[] chestItems = {"Sword", "Spear", "Trident", "Bow", "Godly Bolt"};
+        Random random = new Random();
+        int randomIndex = random.nextInt(chestItems.length);
+        return chestItems[randomIndex];
+    }
+
+    // Add the item to the player's inventory
+    public static void addItemToInventory(String item) {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i].equals(" ")) { // If there's an empty slot in inventory
+                inventory[i] = item;
+                break;
+            }
+        }
     }
 }
-
