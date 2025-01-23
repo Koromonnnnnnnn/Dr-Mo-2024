@@ -9,13 +9,14 @@ def binarySearch(arr, low, high, x):
             high = mid - 1
     return -1
 
+
 def binarySearch2(arr, low, high, x):
-    if high >=low:
-        mid = (high+low) // 2
+    if high >= low:
+        mid = (high + low) // 2
         if arr[mid] == x:
             return mid
         elif arr[mid] > x:
-            return binarySearch2(arr, low, mid -1, x)
+            return binarySearch2(arr, low, mid - 1, x)
         else:
             return binarySearch2(arr, mid + 1, high, x)
     return -1
