@@ -12,7 +12,8 @@ ORANGE = (200, 100, 0)
 GREEN = (0, 150, 0)
 
 
-class Heart:
+
+class Shape:
     def __init__(self, x, y, color):
         self.x = x
         self.y = y
@@ -31,13 +32,7 @@ class Heart:
         pygame.draw.circle(surface, self.color, right_circle_center, 20)
         pygame.draw.polygon(surface, self.color, triangle_points)
 
-
-class Flower:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def draw(self, screen):
+    def draw2(self, screen):
         # Draw the stem
         pygame.draw.rect(screen, GREEN, (self.x - 10, self.y, 20, 100))
 
@@ -54,6 +49,15 @@ class Flower:
         # Draw the center of the flower
         pygame.draw.circle(screen, ORANGE, (self.x, self.y - 20), 20)  # flower center
 
+class Heart(Shape):
+  def __init__(self, x, y, color):
+    super().__init__(x, y, color)
+
+
+class Flower(Shape):
+  def __init__(self, x, y, color):
+    super().__init__(x, y, color)
+
 
 # Create instances of Heart
 heart1 = Heart(50, 100, (250, 0, 0))
@@ -63,10 +67,10 @@ heart2 = Heart(
 heart3 = Heart(450, 100, (250, 0, 0))
 heart4 = Heart(650, 100, (250, 0, 0))
 
-flower1 = Flower(50, 220)
-flower2 = Flower(250, 220)
-flower3 = Flower(450, 220)
-flower4 = Flower(650, 220)
+flower1 = Flower(50, 220, (250, 0, 0))
+flower2 = Flower(250, 220, (250, 0, 0))
+flower3 = Flower(450, 220, (250, 0, 0))
+flower4 = Flower(650, 220, (250, 0, 0))
 
 # Draw everything
 heart1.draw(screen)
@@ -74,10 +78,10 @@ heart2.draw(screen)
 heart3.draw(screen)
 heart4.draw(screen)
 
-flower1.draw(screen)
-flower2.draw(screen)
-flower3.draw(screen)
-flower4.draw(screen)
+flower1.draw2(screen)
+flower2.draw2(screen)
+flower3.draw2(screen)
+flower4.draw2(screen)
 
 text1 = font.render("I Love You!", True, (255, 255, 255))
 text2 = font.render("Happy Valentines Day", True, (250, 0, 0), (200, 150, 150))
