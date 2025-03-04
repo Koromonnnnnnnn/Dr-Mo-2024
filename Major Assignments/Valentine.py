@@ -90,4 +90,4 @@ screen.blit(text2, (400, 300))
 screen.blit(img, (0, 400))
 
 pygame.display.flip()
-pygame.time.wait(5000)
+pygame.time.wait(60000)
