@@ -39,6 +39,15 @@ while running:
     pygame.draw.circle(screen, (255, 255, 0), (100, 450), 8)
     pygame.draw.line(screen, (0, 100, 0), (100, 460), (100, 500), 3)
 
+    # Flower 2
+    pygame.draw.circle(screen, (255, 105, 180), (140, 450), 10)
+    pygame.draw.circle(screen, (255, 105, 180), (160, 450), 10)
+    pygame.draw.circle(screen, (255, 105, 180), (150, 440), 10)
+    pygame.draw.circle(screen, (255, 105, 180), (150, 460), 10)
+    pygame.draw.circle(screen, (255, 255, 0), (150, 450), 8)
+    pygame.draw.line(screen, (0, 100, 0), (150, 460), (150, 500), 3)
+
+
     # Bee 1
     pygame.draw.ellipse(screen, (255, 215, 0), (150, 200, 30, 20))
     pygame.draw.line(screen, (0, 0, 0), (155, 200), (155, 220), 2)
