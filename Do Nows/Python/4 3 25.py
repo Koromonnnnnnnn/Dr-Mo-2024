@@ -1,10 +1,3 @@
-
-Raidin Lopez <822326@dpsk12.net>
-9:28 AM (38 minutes ago)
-to me, 782491
-
-
-
 import pygame
 
 
